@@ -1,19 +1,31 @@
 package com.example.demo.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tasks")
 public class Task {
+	
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Column(name = "date")
 	private String date;
+	
+	@Column(name = "start_time")
 	private String startTime;
+	
+	@Column(name = "stop_time")
 	private String stopTime;
+	
+	@Column(name = "description")
 	private String description;
 	
 	@ManyToOne

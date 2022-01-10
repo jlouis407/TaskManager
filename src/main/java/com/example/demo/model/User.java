@@ -9,17 +9,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
 @Entity
+@Table(name = "users")
 public class User {
 	
 	@Id
-	@Column(unique = true)
+	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "name")
 	private String name;
 	
+	@Column(name = "password")
 	private String password;
 	
 	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL)
@@ -28,6 +32,7 @@ public class User {
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name="USER_ROLES", joinColumns= {@JoinColumn(name="USER_EMAIL", referencedColumnName="email")}, 
 			inverseJoinColumns = { @JoinColumn(name = "ROLE_NAME", referencedColumnName="email")})
+	
 	private List<Role> roles;
 	
 	public User() {
